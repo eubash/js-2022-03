@@ -14,12 +14,12 @@ jobs:
       - name: Fetch json config
         run: |
           echo 'JSON_RESPONSE<<EOF' >> $GITHUB_ENV
-          curl -X GET https://static.dev.liber.casa/build/enviornments/env.json >> $GITHUB_ENV
+          curl https://httpbin.org/json >> $GITHUB_ENV
           echo 'EOF' >> $GITHUB_ENV
 
-      - name: Checkout
-        uses: actions/checkout@v2
+#      - name: Checkout
+#        uses: actions/checkout@v2
 
       - name: Use env vars from json
         run: |
-          echo "Multi language = ${{ env.MULTI_LANGUAGE }}"
+          echo "Multi language = ${{ env.slideshow }}"
