@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - 'step-7'
-      tags:
-        - '**'
+    tags:
+      - '**'
 
 jobs:
   fetch-json:
