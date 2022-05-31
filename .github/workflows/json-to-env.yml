@@ -15,6 +15,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Fetch and update json config
+        uses: fregante/setup-git-user@v1
         run: |
           curl https://static.dev.liber.casa/build/environments/env.json -o env.json
           git add env.json
