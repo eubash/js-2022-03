@@ -22,4 +22,4 @@ jobs:
 
       - name: Use env vars from json
         run: |
-          echo "Multi language = ${{ env.JSON_RESPONSE.MULTI_LANGUAGE }}"
+          echo "Multi language = ${{ env.JSON_RESPONSE.OPTIONS }}, + ${{ env.OPTIONS }}, + ${{ env.JSON_RESPONSE }}"
