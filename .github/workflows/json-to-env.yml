@@ -14,7 +14,7 @@ jobs:
       - name: Fetch json config
         run: |
           echo 'JSON_RESPONSE<<EOF' >> $GITHUB_ENV
-          curl https://static.dev.liber.casa/build/enviornments/env.json >> $GITHUB_ENV
+          curl https://static.dev.liber.casa/build/environments/env.json >> $GITHUB_ENV
           echo 'EOF' >> $GITHUB_ENV
 
 #      - name: Checkout
