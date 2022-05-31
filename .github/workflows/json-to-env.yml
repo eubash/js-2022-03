@@ -11,15 +11,22 @@ jobs:
   fetch-json:
     runs-on: ubuntu-latest
     steps:
-      - name: Fetch json config
-        run: |
-          echo 'JSON_RESPONSE<<EOF' >> $GITHUB_ENV
-          curl https://static.dev.liber.casa/build/environments/env.json >> $GITHUB_ENV
-          echo 'EOF' >> $GITHUB_ENV
+      - name: Checkout
+        uses: actions/checkout@v2
 
-#      - name: Checkout
-#        uses: actions/checkout@v2
+      - name: Fetch and update json config
+        run: |
+          curl https://static.dev.liber.casa/build/environments/env.json -o env.json
+          git add env.json
+          git commit -m "Update env"
+          git push
+
+      - name: JSON to variables
+        uses: antifree/json-to-variables@v1.0.1
+        with:
+          filename: 'env.json'
+          prefix: VUE_APP
 
       - name: Use env vars from json
         run: |
-          echo "Multi language = ${{ fromJSON(env.JSON_RESPONSE).OPTIONS }}, + ${{ env.JSON_RESPONSE }}"
+          echo "Multi language = ${{ env.VUE_APP_MULTI_LANGUAGE }}, + ${{ env.VUE_APP_OPTIONS }}"
